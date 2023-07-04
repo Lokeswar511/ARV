@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mani7571"
+		},
+		"AmazonS31_secretAccessKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"SqlServer_connectionString": {
+			"value": ""
+		},
+		"marketdata_accountKey": {
+			"value": ""
+		},
+		"orders_accountKey": {
+			"value": ""
+		},
+		"AmazonS31_properties_typeProperties_accessKeyId": {
+			"value": "AKIA5GTBAKI3MAYB3QGN"
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://store7571.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://deleteblobtriggersql.dfs.core.windows.net/"
+		},
+		"marketdata_properties_typeProperties_url": {
+			"value": "https://mdata11.dfs.core.windows.net/"
+		},
+		"orders_properties_typeProperties_url": {
+			"value": "https://store7571.dfs.core.windows.net/"
+		}
+	}
+}
