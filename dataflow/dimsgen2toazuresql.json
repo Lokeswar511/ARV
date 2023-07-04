@@ -1,0 +1,141 @@
+{
+	"name": "dimsgen2toazuresql",
+	"properties": {
+		"folder": {
+			"name": "gen2toazuresqlvalidation"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "teacher",
+						"type": "DatasetReference"
+					},
+					"name": "teacherAddress"
+				},
+				{
+					"dataset": {
+						"referenceName": "student",
+						"type": "DatasetReference"
+					},
+					"name": "student"
+				},
+				{
+					"dataset": {
+						"referenceName": "student",
+						"type": "DatasetReference"
+					},
+					"name": "studentAdress"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTabletacherAddress",
+						"type": "DatasetReference"
+					},
+					"name": "teacherAdressDim"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTablestudent",
+						"type": "DatasetReference"
+					},
+					"name": "studentDim"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTablestudentAdress",
+						"type": "DatasetReference"
+					},
+					"name": "studentAdressDim"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          teacher_address_id as integer,",
+				"          teacher_id as integer,",
+				"          state as string,",
+				"          city as string,",
+				"          watermark as date 'dd-MM-yyyy'",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> teacherAddress",
+				"source(output(",
+				"          student_id as integer,",
+				"          name as string,",
+				"          branch as string,",
+				"          watermark as date 'dd-MM-yyyy',",
+				"          teacher_id as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> student",
+				"source(output(",
+				"          student_address_id as integer,",
+				"          student_id as integer,",
+				"          state as string,",
+				"          city as string,",
+				"          watermark as date 'yyyy-MM-dd'",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> studentAdress",
+				"teacherAddress sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          teacher_address_id as integer,",
+				"          teacher_id as integer,",
+				"          state as string,",
+				"          city as string,",
+				"          watermark as date",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> teacherAdressDim",
+				"student sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          student_id as integer,",
+				"          name as string,",
+				"          branch as string,",
+				"          watermark as date,",
+				"          teacher_id as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> studentDim",
+				"studentAdress sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          student_address_id as integer,",
+				"          student_id as integer,",
+				"          state as string,",
+				"          city as string,",
+				"          watermark as date",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> studentAdressDim"
+			]
+		}
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"name": "AzureSqlTabletacherAddress",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "teacher_address_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "teacher_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "state",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "watermark",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "teacher_address_dim"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
