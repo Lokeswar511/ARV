@@ -12,7 +12,7 @@
 						"value": "@pipeline().parameters.orderS_month",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Execute Pipeline1",

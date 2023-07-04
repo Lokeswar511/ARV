@@ -89,7 +89,8 @@
 				"          order_item_order_id,",
 				"          revenue,",
 				"          date = { order_date}",
-				"     )) ~> sink1"
+				"     ),",
+				"     partitionBy('roundRobin', 2)) ~> sink1"
 			]
 		}
 	}
