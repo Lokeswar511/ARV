@@ -1,0 +1,30 @@
+{
+	"name": "ordersparquet_monthly",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "orders",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"orders_month": {
+				"type": "string",
+				"defaultValue": "201401"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat('data/order_mont=',dataset().orders_month)",
+					"type": "Expression"
+				},
+				"fileSystem": "container1"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,37 @@
+{
+	"name": "gen2toazuresql",
+	"properties": {
+		"activities": [
+			{
+				"name": "dimsgen2toazuresql",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dimsgen2toazuresql",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"folder": {
+			"name": "ssmstoazuresql"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-07-01T05:42:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
